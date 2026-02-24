@@ -26,7 +26,7 @@
 .EXAMPLE
     .\OfficeChannelAnalyzer.ps1
     .\OfficeChannelAnalyzer.ps1 -Path "C:\Logs\CustomerMachine"
-    OfficeChannelAnalyzer.exe "C:\Logs\mattphil"
+    OfficeChannelAnalyzer.exe "C:\Temp\OfficeDiag"
     OfficeChannelAnalyzer.exe /?
 
 .NOTES
@@ -65,8 +65,8 @@ function Show-Usage {
     Write-Host "  EXAMPLES:" -ForegroundColor Yellow
     Write-Host '    OfficeChannelAnalyzer.exe' -ForegroundColor Gray
     Write-Host '    OfficeChannelAnalyzer.exe "C:\Logs\CustomerMachine"' -ForegroundColor Gray
-    Write-Host '    OfficeChannelAnalyzer.exe .\mattphil' -ForegroundColor Gray
-    Write-Host '    OfficeChannelAnalyzer.exe .\mattphil\Registry' -ForegroundColor Gray
+    Write-Host '    OfficeChannelAnalyzer.exe .\OfficeDiag' -ForegroundColor Gray
+    Write-Host '    OfficeChannelAnalyzer.exe .\OfficeDiag\Registry' -ForegroundColor Gray
     Write-Host '    OfficeChannelAnalyzer.exe /?' -ForegroundColor Gray
     Write-Host ""
     Write-Host "  OUTPUT:" -ForegroundColor Yellow
