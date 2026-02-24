@@ -1,0 +1,55 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install PS2EXE
+        shell: pwsh
+        run: |
+          Install-Module -Name ps2exe -Force -Scope CurrentUser
+
+      - name: Compile to EXE
+        shell: pwsh
+        run: |
+          Invoke-ps2exe -InputFile OfficeChannelAnalyzer.ps1 `
+                        -OutputFile OfficeChannelAnalyzer.exe `
+                        -Title "Office Channel Analyzer" `
+                        -Description "Microsoft 365 Apps Update Channel Priority Analyzer" `
+                        -Version "${{ github.ref_name }}".TrimStart('v') `
+                        -NoConsole:$false `
+                        -RequireAdmin:$false
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: OfficeChannelAnalyzer.exe
+          generate_release_notes: true
+          body: |
+            ## Office Channel Analyzer ${{ github.ref_name }}
+
+            ### Download & Run
+            Download `OfficeChannelAnalyzer.exe` below and run it on any Windows machine with Microsoft 365 Apps installed.
+
+            **Live mode** (query local registry):
+            ```
+            OfficeChannelAnalyzer.exe
+            ```
+
+            **File mode** (analyze exported registry files):
+            ```
+            OfficeChannelAnalyzer.exe "C:\Logs\DiagFolder"
+            ```
+
+            See [README](https://github.com/${{ github.repository }}/blob/main/README.md) for full documentation.

@@ -1,0 +1,21 @@
+# Build output
+*.exe
+!.github/**
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# PowerShell
+*.psm1.bak
+
+# Output files from running the tool
+OfficePolicies.html
