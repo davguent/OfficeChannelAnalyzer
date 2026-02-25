@@ -6,7 +6,7 @@ Determines the **active update channel** for Microsoft 365 Apps for Enterprise b
 
 ### Option 1: Download the EXE (easiest)
 
-Download `OfficeChannelAnalyzer.exe` from [Releases](../../releases/latest) and run it:
+`OfficeChannelAnalyzer.exe` is in the root of this repository. Download it and run:
 
 ```powershell
 # Live mode — queries the local machine's registry directly
@@ -19,10 +19,7 @@ OfficeChannelAnalyzer.exe "C:\Logs\CustomerMachine"
 ### Option 2: Run the PowerShell script
 
 ```powershell
-# Download and run (one-liner)
-irm https://raw.githubusercontent.com/<owner>/OfficeChannelAnalyzer/main/OfficeChannelAnalyzer.ps1 -OutFile OfficeChannelAnalyzer.ps1; .\OfficeChannelAnalyzer.ps1
-
-# Or clone the repo
+# Clone the repo
 git clone https://github.com/<owner>/OfficeChannelAnalyzer.git
 cd OfficeChannelAnalyzer
 .\OfficeChannelAnalyzer.ps1
